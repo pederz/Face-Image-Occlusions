@@ -58,7 +58,7 @@ glass = 'glass.png'
 ````
 | Real Image | Synthetic Image |
 | -------------- | ------------ |
-|![real_img](example/org_img.png) | ![synthetic_img](example/output_img.png)
+|![001_1.png](example/001_1.png) | ![001_1_m_g.png](example/001_1_m_g.png)
 
 # Biometric Features Extraction
 
