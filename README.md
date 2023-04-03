@@ -47,7 +47,8 @@ This project was runned on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`
    - `model_path` is pointing to location of `shape_predictor_68_face_landmarks.dat`.
    - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the face images that are located in `samples/`.
    - NB! The choices of occlusions that are supported are the files that are in `occ/`.
-5. Run the script and the face images with the generated face occlusions are outputed in `results/`.
+5. Run the script and the synthetic images are saved in `results/` with addition of characters based on what occlusions are added to the image.
+   - Example: `001_Image01.jpg` with selected mask and glass as occlusions are saved as `001_Image01_m_g.jpg`
 
 ## Example
 This example is adding mask and glasses occlusions to face images, with showing the occlusion variables and real and synthetic image.
@@ -126,9 +127,13 @@ Person B:
      glass = 0
      sunglass = 0
      ````
-3. Similarity comparisons are stored are saved in `similarity_scores/`.
-   - real images are saved in `embeddings/real/`.
-   - generated images with occlusions are saved in `embeddings/synthetic/`.
+3. Similarity comparisons are saved in `similarity_scores/, with one file for each of the different categories of comparisons.
+   - Synthetic comparisons are saved as two different numpy files (with addition of txt version) named `synthetic_images_mated` and `synthetic_images_non_mated`, with an addition of characters in the file name based on what occlusions are selected in the comparison.
+       * Example: Comparison with mask and glass as selected occlusions are saved as `synthetic_images_mated_m_g.npy` and `synthetic_images_non_mated_m_g.npy`.
+   - Real vs synthetic comparisons are saved as two different numpy files (with addition of txt version) named `real_vs_synthetic_images_mated` and `real_vs_synthetic_images_non_mated`, with an addition of characters in the file name based on what occlusions are selected in the comparison.
+       * Example: Comparison with mask and glass as selected occlusions are saved as `real_vs_synthetic_images_mated_m_g.npy` and `real_vs_synthetic_images_non_mated_m_g.npy`.
+   - Real comparisons are saved as two different numpy files (with addition of txt version): `real_images_mated` and `real_images_non_mated`.
+        * Occlusions are not applicable when comparing real images only.
 
 # Plot distribution
 
