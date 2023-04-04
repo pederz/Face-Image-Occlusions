@@ -12,6 +12,7 @@ When referring to real images, it means original face images. When referring to 
 <!-- Table of Contents -->
 
 # :notebook_with_decorative_cover: Table of Contents
+- [Project Requirements](#project-requirements)
 - [Face Image Occlusion Generation](#face-image-occlusion-generation)
    * [:ballot_box_with_check: Requirements](#requirements)
    * [:toolbox: Setup](#setup)
@@ -25,8 +26,29 @@ When referring to real images, it means original face images. When referring to 
 - [Plot distribution](#plot-distribution) 
    * [:ballot_box_with_check: Requirements](#requirements-2)
    * [:toolbox: Setup](#setup-2)
+   
+## Project Requirements
 
 The [add_occlusions_on_images.ipynb](../main/add_occlusions_on_images.ipynb) requires a pretrained model from dlib called `shape_predictor_68_face_landmarks.dat` that can be downloaded from [http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2).
+
+
+All filenames of the images MUST start with a digit id followed by a underscore, where the id is unique of each different person. Example:
+````
+Person A:
+001_Image01.jpg
+001_Image02.jpeg
+001_Image03.png
+001_Image04.jpg
+Person B:
+002_Image01.jpg
+002_Image02.png
+002_Image03.jpg
+002_Image04.jpeg
+````
+
+All images must be either `*.png`, `*.jpg`, or `*.jpeg`
+
+
 # Face Image Occlusion Generation
 
 ## Requirements
@@ -45,10 +67,21 @@ This project was runned on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`
 3. Open the script `add_occlusions_on_images.ipynb` in Jupyterlab.
 4. Ensure that the parameters in the first cell are correct in regards to the following:
    - `model_path` is pointing to location of `shape_predictor_68_face_landmarks.dat`.
-   - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the face images that are located in `samples/`.
+   - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the face images that are located in `samples/`. Glass can either be `sunglass.png` or `glass.png`, this will change the filename accordingly.
    - NB! The choices of occlusions that are supported are the files that are in `occ/`.
 5. Run the script and the synthetic images are saved in `results/` with addition of characters based on what occlusions are added to the image.
-   - Example: `001_Image01.jpg` with selected mask and glass as occlusions are saved as `001_Image01_m_g.jpg`
+   - Example: `001_Image01.jpg` with selected mask and glass as occlusions are saved as `001_Image01_mask_glass.jpg`
+   - The script prints a list over files that were rejected as a result of the following:
+      * Multiple faces were detected in image
+      * Face not detected in image
+      * Extreme pose conditions detected in image
+      * If one of the following landsmarks are out of image bounds:
+        - left ear
+        - right ear
+        - chin
+        - eyes
+ 
+
 
 ## Example
 This example is adding mask and glasses occlusions to face images, with showing the occlusion variables and real and synthetic image.
@@ -98,20 +131,6 @@ This project was runned on machine with Ubuntu 22.04, GPU with CUDA, and `Python
 | jupyterlab | 3.6.3 |
 | tqdm | 4.65.0 |
 | numpy | 1.24.2 |
-
-All filenames of the images must start with a three digit id followed by a underscore, where the id is unique of each different person. Example:
-````
-Person A:
-001_Image01.jpg
-001_Image02.jpg
-001_Image03.jpg
-001_Image04.jpg
-Person B:
-002_Image01.jpg
-002_Image02.jpg
-002_Image03.jpg
-002_Image04.jpg
-````
 
 ## Setup
 1. Open the script `similarity_comparison_real.ipynb`, `similarity_comparison_synthetic_seleted`, or `similairty_comparison_real_vs_synthetic_selected.ipynb` in Jupyterlab.
