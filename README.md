@@ -12,7 +12,7 @@ When referring to real images, it means original face images. When referring to 
 <!-- Table of Contents -->
 
 # :notebook_with_decorative_cover: Table of Contents
-- [Project Requirements](#project-requirements)
+- [:ballot_box_with_check: Project Requirements](#project-requirements)
 - [Face Image Occlusion Generation](#face-image-occlusion-generation)
    * [:ballot_box_with_check: Requirements](#requirements)
    * [:toolbox: Setup](#setup)
@@ -67,7 +67,7 @@ This project was runned on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`
 3. Open the script `add_occlusions_on_images.ipynb` in Jupyterlab.
 4. Ensure that the parameters in the first cell are correct in regards to the following:
    - `model_path` is pointing to location of `shape_predictor_68_face_landmarks.dat`.
-   - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the face images that are located in `samples/`. Glass can either be `sunglass.png` or `glass.png`, this will change the filename accordingly.
+   - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the face images that are located in `samples/`. Glass can either be `sunglass.png` or `glass.png`, this will change the output filename accordingly.
    - NB! The choices of occlusions that are supported are the files that are in `occ/`.
 5. Run the script and the synthetic images are saved in `results/` with addition of characters based on what occlusions are added to the image.
    - Example: `001_Image01.jpg` with selected mask and glass as occlusions are saved as `001_Image01_mask_glass.jpg`
@@ -92,7 +92,7 @@ glass = 'glass.png'
 ````
 | Real Image | Synthetic Image |
 | -------------- | ------------ |
-|![001_1.png](example/001_1.png) | ![001_1_m_g.png](example/001_1_m_g.png)
+|![001_1.png](example/001_1.png) | ![001_1_m_g.png](example/001_1_mask_glass.png)
 
 # Biometric Features Extraction
 
@@ -148,9 +148,9 @@ This project was runned on machine with Ubuntu 22.04, GPU with CUDA, and `Python
      ````
 3. Similarity comparisons are saved in `similarity_scores/, with one file for each of the different categories of comparisons.
    - Synthetic comparisons are saved as two different numpy files (with addition of txt version) named `synthetic_images_mated` and `synthetic_images_non_mated`, with an addition of characters in the file name based on what occlusions are selected in the comparison.
-       * Example: Comparison with mask and glass as selected occlusions are saved as `synthetic_images_mated_m_g.npy` and `synthetic_images_non_mated_m_g.npy`.
+       * Example: Comparison with mask and glass as selected occlusions are saved as `synthetic_images_mated_mask_glass.npy` and `synthetic_images_non_mated_mask_glass.npy`.
    - Real vs synthetic comparisons are saved as two different numpy files (with addition of txt version) named `real_vs_synthetic_images_mated` and `real_vs_synthetic_images_non_mated`, with an addition of characters in the file name based on what occlusions are selected in the comparison.
-       * Example: Comparison with mask and glass as selected occlusions are saved as `real_vs_synthetic_images_mated_m_g.npy` and `real_vs_synthetic_images_non_mated_m_g.npy`.
+       * Example: Comparison with mask and glass as selected occlusions are saved as `real_vs_synthetic_images_mated_mask_glass.npy` and `real_vs_synthetic_images_non_mated_mask_glass.npy`.
    - Real comparisons are saved as two different numpy files (with addition of txt version): `real_images_mated` and `real_images_non_mated`.
         * Occlusions are not applicable when comparing real images only.
 
