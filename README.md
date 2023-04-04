@@ -6,7 +6,7 @@
     The code files for the project Face Image Occlusions Generation in the course [IMT4126 Biometrics](https://www.ntnu.edu/studies/courses/IMT4126) at NTNU.
   </p>
 </div>
-When refering to real images, it means original face images. When refering to synthetic images, it means face images with face occlusions applied to the image.
+When referring to real images, it means original face images. When referring to synthetic images, it means face images with face occlusions applied to the image.
 <br />
 
 <!-- Table of Contents -->
