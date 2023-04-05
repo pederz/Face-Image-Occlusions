@@ -46,7 +46,7 @@ Person B:
 002_Image04.jpeg
 ````
 
-All images must be either `*.png`, `*.jpg`, or `*.jpeg`
+All images must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or RGBA.
 
 
 # Face Image Occlusion Generation
@@ -71,10 +71,11 @@ This project was runned on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`
    - NB! The choices of occlusions that are supported are the files that are in `occ/`.
 5. Run the script and the synthetic images are saved in `results/` with addition of characters based on what occlusions are added to the image.
    - Example: `001_Image01.jpg` with selected mask and glass as occlusions are saved as `001_Image01_mask_glass.jpg`
-   - The script prints a list over files that were rejected as a result of the following:
+   - The script prints a list over images that were rejected as a result of the following:
       * Multiple faces were detected in image
       * Face not detected in image
       * Extreme pose conditions detected in image
+      * Image is grayscale
       * If one of the following landsmarks are out of image bounds:
         - left ear
         - right ear
