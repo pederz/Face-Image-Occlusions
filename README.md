@@ -109,11 +109,11 @@ This project was runned on machine with Ubuntu 22.04, GPU with CUDA, and `Python
 | jupyterlab | 3.6.3 |
 | tqdm | 4.65.0 |
 | opencv-python| 4.7.0.68 |
-| numpy | 1.24.2 |
-| onnxruntime-gpu *| 1.4.1 |
-| insightface | 0.7.3 |
+| numpy | 1.24.2 |
+| onnxruntime-gpu [^1] | 1.4.1 |
+| insightface | 0.7.3 |
 
-*) If running with only cpu mode, install onnxruntime instead. NB! The feature extraction will take longer time.
+[^1]: If running with only cpu mode, install onnxruntime instead. NB! The feature extraction will take longer time.
 
 ## Setup
 1. Open the script `create_embedding_real.ipynb` or `create_embedding_synthetic.ipynb` in Jupyterlab.
