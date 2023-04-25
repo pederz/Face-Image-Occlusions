@@ -135,7 +135,7 @@ This project was runned on machine with Ubuntu 22.04, GPU with CUDA, and `Python
 | -------------- | ------------ |
 | jupyterlab | 3.6.3 |
 | tqdm | 4.65.0 |
-| numpy | 1.24.2 |
+| numpy | 1.24.2 |
 
 ## Setup
 1. Open one of the following scripts in JupyterLab:
@@ -168,9 +168,9 @@ This project was runned on machine with Ubuntu 22.04, GPU with CUDA, and `Python
 | pip package | version used |
 | -------------- | ------------ |
 | jupyterlab | 3.6.3 |
-| pandas | 2.0.0 |
-| numpy | 1.24.2 |
-| seaborn | 0.12.2 |
-| matplotlib | 3.7.1 |
+| pandas | 2.0.0 |
+| numpy | 1.24.2 |
+| seaborn | 0.12.2 |
+| matplotlib | 3.7.1 |
 
 ## Setup
