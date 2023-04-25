@@ -32,18 +32,18 @@ When referring to real images, it means original face images. When referring to 
 The [add_occlusions_on_images.ipynb](../main/add_occlusions_on_images.ipynb) requires a pretrained model from dlib called `shape_predictor_68_face_landmarks.dat` that can be downloaded from [http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2).
 
 
-All filenames of the images MUST start with a digit id followed by a d, where the id is unique of each different person. Example:
+All filenames of the images **MUST** start with a digit id followed by a d, where the id is unique of each different person. Example:
 ````
 Person A:
-001_Image01.jpg
-001_Image02.jpeg
-001_Image03.png
-001_Image04.jpg
+00001d001.jpg
+00001d002.jpeg
+00001d003.png
+00001d004.jpg
 Person B:
-002_Image01.jpg
-002_Image02.png
-002_Image03.jpg
-002_Image04.jpeg
+00002d001.jpg
+00002d002.png
+00002d003.jpg
+00002d004.jpeg
 ````
 
 All images must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or RGBA.
