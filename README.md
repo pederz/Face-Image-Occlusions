@@ -62,16 +62,18 @@ This project was runned on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`
 | opencv-python| 4.7.0.68 |
 
 ## Setup and run
-1. Download `shape_predictor_68_face_landmarks.dat` and put it in the same folder as `add_occlusions_on_images.ipynb` or `add_occlusions_on_images_all_combinations`.
+- If generating all combinations of occlusions, use the script `add_occlusions_on_images_all_combinations.ipynb`.
+- If generating one type of combination of occlusions, use the script `add_occlusions_on_images.ipynb`
+1. Download `shape_predictor_68_face_landmarks.dat` and put it in the project root folder.
 2. Put face images in the `samples/` folder.
-3. Open the script `add_occlusions_on_images.ipynb` in Jupyterlab.
+3. Open one of the two scripts in Jupyterlab.
 4. Ensure that the parameters in the first cell are correct in regards to the following:
    - `model_path` is pointing to location of `shape_predictor_68_face_landmarks.dat`.
    - If `add_occlusions_on_images.ipynb`:
      - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the face images that are located in `samples/`. Glass can either be `sunglass.png` or `glass.png`, this will change the output filename accordingly.
+     -  NB! The choices of occlusions that are supported are the files that are in `occ/`.
    - If `add_occlusions_on_images_all_combinations`:
      - `cap.png`, `glass.png`, `mask.png`, and `sunglass.png` must be precent in `occ/`
-   - NB! The choices of occlusions that are supported are the files that are in `occ/`.
 5. Run the script and the synthetic images are saved in `results/` with addition of characters based on what occlusions are added to the image.
    - Example: `00001d001.jpg` with selected mask and glass as occlusions are saved as `00001d001_mask_glass.jpg`
    - The script prints a list over images that were rejected as a result of the following:
@@ -114,7 +116,7 @@ This project was runned on machine with Ubuntu 22.04, GPU with CUDA, and `Python
 *) If running with only cpu mode, install onnxruntime instead. NB! The feature extraction will take longer time.
 
 ## Setup
-1. Open the script `create_embedding_insightface.ipynb` or `create_embedding_insightface_synthetic_only.ipynb` in Jupyterlab.
+1. Open the script `create_embedding_real.ipynb` or `create_embedding_synthetic.ipynb` in Jupyterlab.
    - `create_embedding_real.ipynb` extracts embeddings only from real images (from `samples/`).
    - `create_embedding_synthetic.ipynb` extracts embeddings only from synthetic images (from `results/`).
 2. Run the script!
@@ -136,10 +138,11 @@ This project was runned on machine with Ubuntu 22.04, GPU with CUDA, and `Python
 | numpy | 1.24.2 |
 
 ## Setup
-1. Open the script `similarity_comparison_real.ipynb`, `similarity_comparison_synthetic_seleted`, or `similairty_comparison_real_vs_synthetic_selected.ipynb` in Jupyterlab.
-   - `similarity_comparison_real.ipynb` runs similarity comparison (mated and non-mated)  on all embeddings on real images found in `embeddings/real/`:
-   - `similarity_comparison_real_vs_synthetic_selected.ipynb` runs similarity comparison (mated and non-mated) on only real vs synthetic embeddings with the selected occlusions. It selects one real embedding for each id, and compares them towards all synthetic embeddings with the selected occlusions.
-   -  `similarity_comparison_real_vs_synthetic_selected.ipynb` runs similarity comparison  (mated and non-mated) on only synthetic embeddings with the selected occlusions.
+1. Open one of the following scripts in JupyterLab:
+  - `similarity_comparison_real_vs_sythetic_all_combinations.ipynb` runs similarity comparison (mated and non-mated) on real vs synthetic embeddings with all combinations of occlusions. It selects one real embedding for each id, and compares them towards all synthetic embeddings with the one set of combinations of occlusions. And loops through this until all combinations are done.
+  - `similarity_comparison_real.ipynb` runs similarity comparison (mated and non-mated) on all embeddings on real images found in `embeddings/real/`:
+  - `similarity_comparison_real_vs_synthetic_selected.ipynb` runs similarity comparison (mated and non-mated) on only real vs synthetic embeddings with the selected occlusions. It selects one real embedding for each id, and compares them towards all synthetic embeddings with the selected occlusions.
+  -  `similarity_comparison_real_vs_synthetic_selected.ipynb` runs similarity comparison (mated and non-mated) on only synthetic embeddings with the selected occlusions.
 2. If `similarity_comparison_real_vs_synthetic_selected` or `similarity_comparison_synthetic_selected.ipynb`:
    - Update the parameters of the selected occlusion that are going to be included in the similarity comparison:
    - Example of selecting embeddings with cap and mask to conduct comparison:
