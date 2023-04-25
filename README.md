@@ -32,7 +32,7 @@ When referring to real images, it means original face images. When referring to 
 The [add_occlusions_on_images.ipynb](../main/add_occlusions_on_images.ipynb) requires a pretrained model from dlib called `shape_predictor_68_face_landmarks.dat` that can be downloaded from [http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2).
 
 
-All filenames of the images MUST start with a digit id followed by a underscore, where the id is unique of each different person. Example:
+All filenames of the images MUST start with a digit id followed by a d, where the id is unique of each different person. Example:
 ````
 Person A:
 001_Image01.jpg
@@ -61,16 +61,19 @@ This project was runned on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`
 | tqdm | 4.65.0 |
 | opencv-python| 4.7.0.68 |
 
-## Setup
-1. Download `shape_predictor_68_face_landmarks.dat` and put it in the same folder as `add_occlusions_on_images.ipynb`.
+## Setup and run
+1. Download `shape_predictor_68_face_landmarks.dat` and put it in the same folder as `add_occlusions_on_images.ipynb` or `add_occlusions_on_images_all_combinations`.
 2. Put face images in the `samples/` folder.
 3. Open the script `add_occlusions_on_images.ipynb` in Jupyterlab.
 4. Ensure that the parameters in the first cell are correct in regards to the following:
    - `model_path` is pointing to location of `shape_predictor_68_face_landmarks.dat`.
-   - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the face images that are located in `samples/`. Glass can either be `sunglass.png` or `glass.png`, this will change the output filename accordingly.
+   - If `add_occlusions_on_images.ipynb`:
+     - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the face images that are located in `samples/`. Glass can either be `sunglass.png` or `glass.png`, this will change the output filename accordingly.
+   - If `add_occlusions_on_images_all_combinations`:
+     - `cap.png`, `glass.png`, `mask.png`, and `sunglass.png` must be precent in `occ/`
    - NB! The choices of occlusions that are supported are the files that are in `occ/`.
 5. Run the script and the synthetic images are saved in `results/` with addition of characters based on what occlusions are added to the image.
-   - Example: `001_Image01.jpg` with selected mask and glass as occlusions are saved as `001_Image01_mask_glass.jpg`
+   - Example: `00001d001.jpg` with selected mask and glass as occlusions are saved as `00001d001_mask_glass.jpg`
    - The script prints a list over images that were rejected as a result of the following:
       * Multiple faces were detected in image
       * Face not detected in image
@@ -83,7 +86,6 @@ This project was runned on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`
         - eyes
  
 
-
 ## Example
 This example is adding mask and glasses occlusions to face images, with showing the occlusion variables and real and synthetic image.
 ````
@@ -93,7 +95,7 @@ glass = 'glass.png'
 ````
 | Real Image | Synthetic Image |
 | -------------- | ------------ |
-|![001_1.png](example/001_1.png) | ![001_1_m_g.png](example/001_1_mask_glass.png)
+|![00001d001.png](example/00001d001.png) | ![00001d001_mask_glass.png](example/00001d001_mask_glass.png)
 
 # Biometric Features Extraction
 
