@@ -3,11 +3,14 @@ samples/
 results/
 embeddings/
 similarity_scores/
+plots/
 
-/samples/**
-/results/**
-/embeddings/**
-/similarity_scores/**
+samples/**
+results/**
+embeddings/**
+embeddings/**/**
+similarity_scores/**
+plots/**
 
 **/shape_predictor_68_face_landmarks.dat
 shape_predictor_68_face_landmarks.dat
