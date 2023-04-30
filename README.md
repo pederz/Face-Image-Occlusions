@@ -26,8 +26,12 @@ When referring to real images, it means original face images. When referring to 
 - [Plot distribution](#plot-distribution) 
    * [:ballot_box_with_check: Requirements](#requirements-2)
    * [:toolbox: Setup](#setup-2)
+- [Calcuate DET](#calculate-det) 
+   * [:ballot_box_with_check: Requirements](#requirements-3)
+   * [:toolbox: Setup](#setup-3)
    
 ## Project Requirements
+This project was runned on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`.
 
 The [add_occlusions_on_images.ipynb](../main/add_occlusions_on_images.ipynb) requires a pretrained model from dlib called `shape_predictor_68_face_landmarks.dat` that can be downloaded from [http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2).
 
@@ -52,7 +56,6 @@ All images must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or RGBA.
 # Face Image Occlusion Generation
 
 ## Requirements
-This project was runned on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`.
 
 | pip package | version used |
 | -------------- | ------------ |
@@ -102,7 +105,6 @@ glass = 'glass.png'
 # Biometric Features Extraction
 
 ## Requirements
-This project was runned on machine with Ubuntu 22.04, GPU with CUDA, and `Python 3.10.6`.
 
 | pip package | version used |
 | -------------- | ------------ |
@@ -129,7 +131,6 @@ This project was runned on machine with Ubuntu 22.04, GPU with CUDA, and `Python
 # Similarity Comparision
 
 ## Requirements
-This project was runned on machine with Ubuntu 22.04, GPU with CUDA, and `Python 3.10.6`.
 
 | pip package | version used |
 | -------------- | ------------ |
@@ -163,7 +164,6 @@ This project was runned on machine with Ubuntu 22.04, GPU with CUDA, and `Python
 # Plot distribution
 
 ## Requirements
-This project was runned on machine with Ubuntu 22.04, GPU with CUDA, and `Python 3.10.6`.
 
 | pip package | version used |
 | -------------- | ------------ |
@@ -174,3 +174,19 @@ This project was runned on machine with Ubuntu 22.04, GPU with CUDA, and `Python
 | matplotlib | 3.7.1 |
 
 ## Setup
+
+
+# Calculate DET
+
+## Requirements
+
+| pip package | version used |
+| -------------- | ------------ |
+| tikzplotlib | 3.6.3 |
+| pandas | 2.0.0 |
+| numpy | 1.24.2 |
+| seaborn | 0.12.2 |
+| matplotlib | 3.7.1 |
+
+## Setup
+
