@@ -64,8 +64,8 @@ All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or
 | opencv-python| 4.7.0.68 |
 
 ## Setup and run
-- If generating all combinations of occlusions, use the script `add_occlusions_on_images_all_combinations.ipynb`.
-- If generating one type of combination of occlusions, use the script `add_occlusions_on_images.ipynb`
+- If generating all combinations of occlusions, use the script [add_occlusions_on_images_all_combinations.ipynb](../main/add_occlusions_on_images_all_combinations.ipynb).
+- If generating one type of combination of occlusions, use the script [add_occlusions_on_images.ipynb](../main/add_occlusions_on_images.ipynb)
 1. Download `shape_predictor_68_face_landmarks.dat` and put it in the project root folder.
 2. Put face images in the `samples/` folder.
 3. Open one of the two scripts in Jupyterlab.
@@ -117,7 +117,7 @@ glass = 'glass.png'
 [^1]: If running with only cpu mode, install onnxruntime instead. NB! The feature extraction will take longer time.
 
 ## Setup
-1. Open the script `feature_extraction.ipynb` in Jupyterlab.
+1. Open the script [feature_extraction.ipynb](../main/feature_extraction.ipynb) in Jupyterlab.
    - Second cell extracts features only from real samples (from `samples/`).
    - Third cell extracts features only from synthetic samples (from `results/`).
 2. Run the script!
@@ -141,7 +141,7 @@ Extracted features from real samples (`features/real/`) and sythetic samples (`f
 
 
 ## Setup
-1. Open the script `similarity_comparison.ipynb` in JupyterLab:
+1. Open the script [similarity_comparison.ipynb](../main/similarity_comparison.ipynb) in JupyterLab:
 2. Run the first cell for imports, paths, function definition and creating feature lists
 3. The next cells are independent comparisons:
   - **Second cell**: runs similarity comparison (mated and non-mated) on all features of real samples
