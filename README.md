@@ -71,13 +71,13 @@ All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or
 3. Open one of the two scripts in Jupyterlab.
 4. Ensure that the parameters in the first cell are correct in regards to the following:
    - `model_path` is pointing to location of `shape_predictor_68_face_landmarks.dat`.
-   - If `add_occlusions_on_images.ipynb`:
+   - If generating one type of combination of occlusions:
      - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the samples that are located in `samples/`. Glass can either be `sunglass.png` or `glass.png`, this will change the output filename accordingly.
      -  NB! The choices of occlusions that are supported are the files that are in `occ/`.
-   - If `add_occlusions_on_images_all_combinations`:
-     - `cap.png`, `glass.png`, `mask.png`, and `sunglass.png` must be precent in `occ/`
+   - If generating all combinations of occlusions:
+     - [mask.png](../main/occ/mask.png), [cap.png](../main/occ/cap.png), [glass.png](../main/occ/glass.png), and [sunglass.png](../main/occ/sunglass.png) must be precent in `occ/`
 5. Run the script and the synthetic samples are saved in `results/` with addition of characters based on what occlusions are added to the image.
-   - Example: `00001d001.jpg` with selected mask and glass as occlusions are saved as `00001d001_mask_glass.jpg`
+   - Example: [00001d001.png](example/00001d001.png) with selected mask and glass as occlusions are saved as [00001d001_mask_glass.png](example/00001d001_mask_glass.png)
    - The script prints a list over samples that were rejected as a result of the following:
       * Multiple faces were detected in sample
       * Face not detected in sample
