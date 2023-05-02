@@ -64,20 +64,20 @@ All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or
 | opencv-python| 4.7.0.68 |
 
 ## Setup and run
-- If generating all combinations of occlusions, use the script `add_occlusions_on_images_all_combinations.ipynb`.
-- If generating one type of combination of occlusions, use the script `add_occlusions_on_images.ipynb`
+- If generating all combinations of occlusions, use the script [add_occlusions_on_images_all_combinations.ipynb](../main/add_occlusions_on_images_all_combinations.ipynb).
+- If generating one type of combination of occlusions, use the script [add_occlusions_on_images.ipynb](../main/add_occlusions_on_images.ipynb)
 1. Download `shape_predictor_68_face_landmarks.dat` and put it in the project root folder.
 2. Put face images in the `samples/` folder.
 3. Open one of the two scripts in Jupyterlab.
 4. Ensure that the parameters in the first cell are correct in regards to the following:
    - `model_path` is pointing to location of `shape_predictor_68_face_landmarks.dat`.
-   - If `add_occlusions_on_images.ipynb`:
+   - If generating one type of combination of occlusions:
      - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the samples that are located in `samples/`. Glass can either be `sunglass.png` or `glass.png`, this will change the output filename accordingly.
      -  NB! The choices of occlusions that are supported are the files that are in `occ/`.
-   - If `add_occlusions_on_images_all_combinations`:
-     - `cap.png`, `glass.png`, `mask.png`, and `sunglass.png` must be precent in `occ/`
+   - If generating all combinations of occlusions:
+     - [mask.png](../main/occ/mask.png), [cap.png](../main/occ/cap.png), [glass.png](../main/occ/glass.png), and [sunglass.png](../main/occ/sunglass.png) must be precent in `occ/`
 5. Run the script and the synthetic samples are saved in `results/` with addition of characters based on what occlusions are added to the image.
-   - Example: `00001d001.jpg` with selected mask and glass as occlusions are saved as `00001d001_mask_glass.jpg`
+   - Example: [00001d001.png](example/00001d001.png) with selected mask and glass as occlusions are saved as [00001d001_mask_glass.png](example/00001d001_mask_glass.png)
    - The script prints a list over samples that were rejected as a result of the following:
       * Multiple faces were detected in sample
       * Face not detected in sample
@@ -117,7 +117,7 @@ glass = 'glass.png'
 [^1]: If running with only cpu mode, install onnxruntime instead. NB! The feature extraction will take longer time.
 
 ## Setup
-1. Open the script `feature_extraction.ipynb` in Jupyterlab.
+1. Open the script [feature_extraction.ipynb](../main/feature_extraction.ipynb) in Jupyterlab.
    - Second cell extracts features only from real samples (from `samples/`).
    - Third cell extracts features only from synthetic samples (from `results/`).
 2. Run the script!
@@ -141,7 +141,7 @@ Extracted features from real samples (`features/real/`) and sythetic samples (`f
 
 
 ## Setup
-1. Open the script `similarity_comparison.ipynb` in JupyterLab:
+1. Open the script [similarity_comparison.ipynb](../main/similarity_comparison.ipynb) in JupyterLab:
 2. Run the first cell for imports, paths, function definition and creating feature lists
 3. The next cells are independent comparisons:
   - **Second cell**: runs similarity comparison (mated and non-mated) on all features of real samples
