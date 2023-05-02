@@ -1,14 +1,14 @@
 # Ignore folder and files for synthetics, samples, embeddings, scores , and shape predictor
 samples/
 results/
-embeddings/
+features/
 similarity_scores/
 plots/
 
 samples/**
 results/**
-embeddings/**
-embeddings/**/**
+features/**
+features/**/**
 similarity_scores/**
 plots/**
 
