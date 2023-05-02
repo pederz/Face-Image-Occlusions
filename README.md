@@ -6,7 +6,7 @@
     The code files for the project Face Image Occlusions Generation in the course [IMT4126 Biometrics](https://www.ntnu.edu/studies/courses/IMT4126) at NTNU.
   </p>
 </div>
-When referring to real images, it means original face images. When referring to synthetic images, it means face images with face occlusions applied to the image.
+When referring to real samples, it referes to the biometric samples with biometric characteristic of face that are used as input to add occlusions script. When referring to synthetic samples, it referes to the biometric samples with biometric characteristic of face that are synthetically occluded output by the add occlusion script.
 <br />
 
 <!-- Table of Contents -->
@@ -23,10 +23,10 @@ When referring to real images, it means original face images. When referring to 
 - [Similarity Comparison](#similarity-comparision)
    * [:ballot_box_with_check: Requirements](#requirements-2)
    * [:toolbox: Setup](#setup-2)
-- [Plot distribution](#plot-distribution) 
+- [Distribution plot of similarity scores](#distribution-plot-of-similarity-scores) 
    * [:ballot_box_with_check: Requirements](#requirements-2)
    * [:toolbox: Setup](#setup-2)
-- [Calcuate DET](#calculate-det) 
+- [DET Calculation and Plot](#det-calculation-and-plot) 
    * [:ballot_box_with_check: Requirements](#requirements-3)
    * [:toolbox: Setup](#setup-3)
    
@@ -36,7 +36,7 @@ This project was runned on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`
 The [add_occlusions_on_images.ipynb](../main/add_occlusions_on_images.ipynb) requires a pretrained model from dlib called `shape_predictor_68_face_landmarks.dat` that can be downloaded from [http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2).
 
 
-All filenames of the images **MUST** start with a digit id followed by a d, where the id is unique of each different person. Example:
+All filenames of the biometric samples **MUST** start with a digit id followed by a d, where the id is unique of each different person. Example:
 ````
 Person A:
 00001d001.jpg
@@ -50,8 +50,7 @@ Person B:
 00002d004.jpeg
 ````
 
-All images must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or RGBA.
-
+All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or RGBA.
 
 # Face Image Occlusion Generation
 
@@ -73,17 +72,17 @@ All images must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or RGBA.
 4. Ensure that the parameters in the first cell are correct in regards to the following:
    - `model_path` is pointing to location of `shape_predictor_68_face_landmarks.dat`.
    - If `add_occlusions_on_images.ipynb`:
-     - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the face images that are located in `samples/`. Glass can either be `sunglass.png` or `glass.png`, this will change the output filename accordingly.
+     - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the samples that are located in `samples/`. Glass can either be `sunglass.png` or `glass.png`, this will change the output filename accordingly.
      -  NB! The choices of occlusions that are supported are the files that are in `occ/`.
    - If `add_occlusions_on_images_all_combinations`:
      - `cap.png`, `glass.png`, `mask.png`, and `sunglass.png` must be precent in `occ/`
-5. Run the script and the synthetic images are saved in `results/` with addition of characters based on what occlusions are added to the image.
+5. Run the script and the synthetic samples are saved in `results/` with addition of characters based on what occlusions are added to the image.
    - Example: `00001d001.jpg` with selected mask and glass as occlusions are saved as `00001d001_mask_glass.jpg`
-   - The script prints a list over images that were rejected as a result of the following:
-      * Multiple faces were detected in image
-      * Face not detected in image
-      * Extreme pose conditions detected in image
-      * Image is grayscale
+   - The script prints a list over samples that were rejected as a result of the following:
+      * Multiple faces were detected in sample
+      * Face not detected in sample
+      * Extreme pose conditions detected in sample
+      * Sample is grayscale
       * If one of the following landsmarks are out of image bounds:
         - left ear
         - right ear
@@ -92,13 +91,13 @@ All images must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or RGBA.
  
 
 ## Example
-This example is adding mask and glasses occlusions to face images, with showing the occlusion variables and real and synthetic image.
+This example is adding mask and glasses occlusions to biometric samples, with showing the occlusion variables and real and synthetic sample.
 ````
 mask = 'mask.png'
 cap = ''
 glass = 'glass.png'
 ````
-| Real Image | Synthetic Image |
+| Real Sample | Synthetic Sample |
 | -------------- | ------------ |
 |![00001d001.png](example/00001d001.png) | ![00001d001_mask_glass.png](example/00001d001_mask_glass.png)
 
@@ -118,15 +117,15 @@ glass = 'glass.png'
 [^1]: If running with only cpu mode, install onnxruntime instead. NB! The feature extraction will take longer time.
 
 ## Setup
-1. Open the script `create_embedding_real.ipynb` or `create_embedding_synthetic.ipynb` in Jupyterlab.
-   - `create_embedding_real.ipynb` extracts embeddings only from real images (from `samples/`).
-   - `create_embedding_synthetic.ipynb` extracts embeddings only from synthetic images (from `results/`).
+1. Open the script `feature_extraction.ipynb` in Jupyterlab.
+   - Second cell extracts features only from real samples (from `samples/`).
+   - Third cell extracts features only from synthetic samples (from `results/`).
 2. Run the script!
-   - The script prints a list over files where the insightface cannot detect a face.
-   - NB! The script skips extracting embedding from a file if the embedding file already exist in `embeddings/real/` or `embeddings/synthetic/`
-4. Embeddings are saved in `embeddings/`.
-   - Embeddings from real images are saved in `embeddings/real/`.
-   - Embeddings from synthetic images are saved in `embeddings/synthetic/`.
+   - The script prints a list over biometric samples where the insightface cannot detect a face.
+   - NB! The script skips extracting features from a file if the biometric feature file already exist in `features/real/` or `features/synthetic/`
+4. Features are saved in seperate files for each biometric sample in `features/`.
+   - Features from real samples are saved in the folder `features/real/`.
+   - Features from synthetic samples are saved in the folder `features/synthetic/`.
 
 # Similarity Comparision
 
@@ -138,30 +137,20 @@ glass = 'glass.png'
 | tqdm | 4.65.0 |
 | numpy | 1.24.2 |
 
-## Setup
-1. Open one of the following scripts in JupyterLab:
-  - `similarity_comparison_real_vs_sythetic_all_combinations.ipynb` runs similarity comparison (mated and non-mated) on real vs synthetic embeddings with all combinations of occlusions. It selects one real embedding for each id, and compares them towards all synthetic embeddings with the one set of combinations of occlusions. And loops through this until all combinations are done.
-  - `similarity_comparison_real.ipynb` runs similarity comparison (mated and non-mated) on all embeddings on real images found in `embeddings/real/`:
-  - `similarity_comparison_real_vs_synthetic_selected.ipynb` runs similarity comparison (mated and non-mated) on only real vs synthetic embeddings with the selected occlusions. It selects one real embedding for each id, and compares them towards all synthetic embeddings with the selected occlusions.
-  -  `similarity_comparison_real_vs_synthetic_selected.ipynb` runs similarity comparison (mated and non-mated) on only synthetic embeddings with the selected occlusions.
-2. If `similarity_comparison_real_vs_synthetic_selected` or `similarity_comparison_synthetic_selected.ipynb`:
-   - Update the parameters of the selected occlusion that are going to be included in the similarity comparison:
-   - Example of selecting embeddings with cap and mask to conduct comparison:
-     ````
-     mask = 1
-     cap = 1
-     glass = 0
-     sunglass = 0
-     ````
-3. Similarity comparisons are saved in `similarity_scores/, with one file for each of the different categories of comparisons.
-   - Synthetic comparisons are saved as two different numpy files (with addition of txt version) named `synthetic_images_mated` and `synthetic_images_non_mated`, with an addition of characters in the file name based on what occlusions are selected in the comparison.
-       * Example: Comparison with mask and glass as selected occlusions are saved as `synthetic_images_mated_mask_glass.npy` and `synthetic_images_non_mated_mask_glass.npy`.
-   - Real vs synthetic comparisons are saved as two different numpy files (with addition of txt version) named `real_vs_synthetic_images_mated` and `real_vs_synthetic_images_non_mated`, with an addition of characters in the file name based on what occlusions are selected in the comparison.
-       * Example: Comparison with mask and glass as selected occlusions are saved as `real_vs_synthetic_images_mated_mask_glass.npy` and `real_vs_synthetic_images_non_mated_mask_glass.npy`.
-   - Real comparisons are saved as two different numpy files (with addition of txt version): `real_images_mated` and `real_images_non_mated`.
-        * Occlusions are not applicable when comparing real images only.
+Extracted features from real samples (`features/real/`) and sythetic samples (`features/synthetic/`)
 
-# Plot distribution
+
+## Setup
+1. Open the script `similarity_comparison.ipynb` in JupyterLab:
+2. Run the first cell for imports, paths, function definition and creating feature lists
+3. The next cells are independent comparisons:
+  - **Second cell**: runs similarity comparison (mated and non-mated) on all features of real samples
+  - **Third cell**: runs similarity comparison (mated and non-mated) on real vs synthetic features with all combinations of occlusions. It selects one feature from real image for each subject, and compares them towards all  synthetic features with the one set of combinations of occlusions. And loops through this until all combinations are done.
+  - **Fourth cell**: runs similarity comparison (mated and non-mated) on all features of synthetic samples
+  - **Fifth cell**: runs similarity comparison (mated and non-mated) on real vs all synthetic features
+3. Similarity comparisons are saved in `similarity_scores/, with one file for each of the different categories of comparisons.
+
+# Distribution plot of similarity scores
 
 ## Requirements
 
@@ -176,7 +165,7 @@ glass = 'glass.png'
 ## Setup
 
 
-# Calculate DET
+# DET Calculation and Plot
 
 ## Requirements
 
