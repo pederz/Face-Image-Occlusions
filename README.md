@@ -154,6 +154,31 @@ Extracted features from real samples (`features/real/`) and sythetic samples (`f
 
 ## Requirements
 
+Latex is required for the legends and labels. If not wanting to use latex, remove the following from the first cell:
+```
+# Latex
+import matplotlib
+matplotlib.use("pgf")
+plt.rcParams.update({
+    "pgf.texsystem": "pdflatex",
+    'font.family': 'serif',
+    'text.usetex': True,
+    'pgf.rcfonts': False,
+})
+```
+Remove the r before the quote mark in plot.set.ylabel and plot.set_xlabel in all cells.
+Before: 
+```
+plot.set_ylabel(r'Probability Density')
+plot.set_xlabel(r'Scores')
+```
+After:
+```
+plot.set_ylabel(r'Probability Density')
+plot.set_xlabel(r'Scores')
+```
+
+
 | pip package | version used |
 | -------------- | ------------ |
 | jupyterlab | 3.6.3 |
