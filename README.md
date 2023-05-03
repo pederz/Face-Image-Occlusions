@@ -122,7 +122,7 @@ glass = 'glass.png'
    - Third cell extracts features only from synthetic samples (from `results/`).
 2. Run the script!
    - The script prints a list over biometric samples where the insightface cannot detect a face.
-   - NB! The script skips extracting features from a file if the biometric feature file already exist in `features/real/` or `features/synthetic/`
+   - NB! The script skips extracting features from a file if the biometric feature file already exist in `features/real/` or `features/synthetic/`. But this behavior can be changed if `overwrite = True` in the first cell
 4. Features are saved in seperate files for each biometric sample in `features/`.
    - Features from real samples are saved in the folder `features/real/`.
    - Features from synthetic samples are saved in the folder `features/synthetic/`.
@@ -148,11 +148,14 @@ Extracted features from real samples (`features/real/`) and sythetic samples (`f
   - **Third cell**: runs similarity comparison (mated and non-mated) on real vs synthetic features with all combinations of occlusions. It selects one feature from real image for each subject, and compares them towards all  synthetic features with the one set of combinations of occlusions. And loops through this until all combinations are done.
   - **Fourth cell**: runs similarity comparison (mated and non-mated) on all features of synthetic samples
   - **Fifth cell**: runs similarity comparison (mated and non-mated) on real vs all synthetic features
-3. Similarity comparisons are saved in `similarity_scores/, with one file for each of the different categories of comparisons.
+4. Similarity comparisons are saved in `similarity_scores/`, with one file for each of the different categories of comparisons.
 
 # Distribution plot of similarity scores
 
 ## Requirements
+
+Latex are used for the legends and labels. If not wanting to use latex, set `LaTeX = False` in the first cell
+
 
 | pip package | version used |
 | -------------- | ------------ |
@@ -163,7 +166,15 @@ Extracted features from real samples (`features/real/`) and sythetic samples (`f
 | matplotlib | 3.7.1 |
 
 ## Setup
-
+1. Open the script [plot_similarity_distribution.ipynb](../main/plot_similarity_distribution.ipynb) in JupyterLab:
+2. Run the first cell for imports, paths, function definition and creating feature lists
+3. The next cells are independent plotting of the different scores:
+  - **First cell**: Plots the score distribution of the mated and non-mated comparison on real samples
+  - **Second cell**: Plots the score distribution of the mated and non-mated comparison for each of the different combinations of occlusions
+  - **Third cell**: Plots one score distribution for all mated comparisons and one score distribution for all non-mated comparisons in `similarity_scores`
+5. Plots are saved in `plots/`, with files for each of the different categories of comparisons
+  - `Latex = True`: Three files for each plot (`.pdf`,`.png`,`.pgf`), and plots are NOT shown in JupyterLab
+  - `LaTeX = False`: Two files for each plot (`.pdf`,`.png`) and plots are shown in JupyterLab
 
 # DET Calculation and Plot
 
