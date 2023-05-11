@@ -71,6 +71,7 @@ All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or
 3. Open one of the two scripts in Jupyterlab.
 4. Ensure that the parameters in the first cell are correct in regards to the following:
    - `model_path` is pointing to location of the file `shape_predictor_68_face_landmarks.dat`.
+   - Delimiter is updated to reflect the file names of face images in `samples/`
    - If generating one type of combination of occlusions:
      - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the samples that are in `samples/`. Glass can either be `sunglass.png` or `glass.png`, this will change the output filename accordingly.
      -  NB! The choices of occlusions that are supported are the files that are in `occ/`.
@@ -142,7 +143,7 @@ Extracted features from real samples (`features/real/`) and synthetic samples (`
 
 ## Setup
 1. Open the script [similarity_comparison.ipynb](../main/similarity_comparison.ipynb) in JupyterLab:
-2. Run the **first cell** for imports, paths, function definition and creating feature lists
+2. Run the **first cell** for imports, paths, function definition and creating feature lists. Update delimiter to reflect the file name
 3. The next cells are independent comparisons:
   - **Second cell**: runs similarity comparison (mated and non-mated) on all features of real samples
   - **Third cell**: runs similarity comparison (mated and non-mated) on real vs synthetic features with all combinations of occlusions. It selects one feature from real image for each subject, and compares them towards all  synthetic features with the one set of combinations of occlusions. And loops through this until all combinations are done.
