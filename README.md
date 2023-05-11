@@ -36,7 +36,7 @@ This project was runned on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`
 The [add_occlusions_on_images.ipynb](../main/add_occlusions_on_images.ipynb) requires a pretrained model from dlib called `shape_predictor_68_face_landmarks.dat` that can be downloaded from [http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2).
 
 
-All filenames of the biometric samples **MUST** start with a id followed by a delimiter, in this case delimiter = d, where the id is unique of each different person. Example:
+All filenames of the biometric samples **MUST** start with a id followed by a delimiter and then a picture number, where the id is unique for each subject and each picture of the subject has its own number. In this example, the delimiter is 'd'. Example:
 ````
 Person A:
 00001d001.jpg
