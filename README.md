@@ -127,7 +127,7 @@ glass = 'glass.png'
    - Features from real samples are saved in the folder `features/real/`.
    - Features from synthetic samples are saved in the folder `features/synthetic/`.
 
-# Similarity Comparision
+# Similarity Comparison
 
 ## Requirements
 
