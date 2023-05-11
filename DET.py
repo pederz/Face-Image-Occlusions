@@ -23,8 +23,15 @@ import copy
 from scipy.special import erfinv
 from collections import namedtuple
 import matplotlib.pyplot as mpl
-from matplotlib2tikz import save as tikz_save
+from tikzplotlib import save as tikz_save
 import logging
+
+mpl.rcParams.update({
+    "pgf.texsystem": "pdflatex",
+    'font.family': 'serif',
+    'text.usetex': True,
+    'pgf.rcfonts': False,
+})
 
 
 __license__ = "HDA-OPEN-RESEARCH"
@@ -40,18 +47,18 @@ __credits__ = ["Niko Brummer", "Anthony Larcher", "Edward de Villiers"]
 # helper functions
 # see: sidekit.bosaris.detplot
 colorStyle = [
-    ((0, 0, 0), '-', 2),  # black
-    ((0, 0, 1.0), '--', 2),  # blue
-    ((0.8, 0.0, 0.0), '-.', 2),  # red
-    ((0, 0.6, 0.0), ':', 2),  # green
-    ((0.5, 0.0, 0.5), '-', 2),  # magenta
-    ((0.3, 0.3, 0.0), '--', 2),  # orange
-    ((0, 0, 0), ':', 2),  # black
-    ((0, 0, 1.0), ':', 2),  # blue
-    ((0.8, 0.0, 0.0), ':', 2),  # red
-    ((0, 0.6, 0.0), '-', 2),  # green
-    ((0.5, 0.0, 0.5), '-.', 2),  # magenta
-    ((0.3, 0.3, 0.0), '-', 2),  # orange
+    ((0, 0, 0), '-', 1),  # black
+    ((0, 0, 1.0), '-', 1),  # blue
+    ((0.8, 0.0, 0.0), '-', 1),  # red
+    ((0, 0.6, 0.0), '-', 1),  # green
+    ((0.5, 0.0, 0.5), '-', 1),  # magenta
+    ((0.3, 0.3, 0.0), '-', 1),  # orange
+    ((0, 0, 0), '--', 1),  # black
+    ((0, 0, 1.0), '--', 1),  # blue
+    ((0.8, 0.0, 0.0), '--', 1),  # red
+    ((0, 0.6, 0.0), '--', 1),  # green
+    ((0.5, 0.0, 0.5), '--', 1),  # magenta
+    ((0.3, 0.3, 0.0), '--', 1),  # orange
     ]
 
 grayStyle = [
@@ -331,7 +338,7 @@ class DET:
          Proc. EUROSPEECH, pp. 1895-1898, 1997
     """
 
-    def __init__(self, biometric_evaluation_type=None, abbreviate_axes=False, plot_title=None,
+    def __init__(self, biometric_evaluation_type=None, abbreviate_axes=False, plot_title=r'Detection Error Tradeoff (DET) curves',
                  plot_eer_line=False, plot_rule_of_30=False, cleanup_segments_distance=0.01):
         self.num_systems = 0
         self.system_labels = []
@@ -350,43 +357,43 @@ class DET:
 
         if biometric_evaluation_type == 'algorithm':
             if abbreviate_axes:
-                self.x_label = 'FMR (in %)'
-                self.y_label = 'FNMR (in %)'
+                self.x_label = r'FMR (in \%)'
+                self.y_label = r'FNMR (in \%)'
             else:
-                self.x_label = 'False Match Rate (in %)'
-                self.y_label = 'False Non-Match Rate (in %)'
+                self.x_label = r'False Match Rate (in \%)'
+                self.y_label = r'False Non-Match Rate (in \%)'
         elif biometric_evaluation_type == 'system':
             if abbreviate_axes:
-                self.x_label = 'FAR (in %)'
-                self.y_label = 'FRR (in %)'
+                self.x_label = r'FAR (in \%)'
+                self.y_label = r'FRR (in \%)'
             else:
-                self.x_label = 'False Acceptance Rate (in %)'
-                self.y_label = 'False Rejection Rate (in %)'
+                self.x_label = r'False Acceptance Rate (in \%)'
+                self.y_label = r'False Rejection Rate (in \%)'
         elif biometric_evaluation_type == 'PAD':
             if abbreviate_axes:
-                self.x_label = 'APCER (in %)'
-                self.y_label = 'BPCER (in %)'
+                self.x_label = r'APCER (in \%)'
+                self.y_label = r'BPCER (in \%)'
             else:
-                self.x_label = 'Attack Presentation Classification Error Rate (in %)'
-                self.y_label = 'Bona Fide Presentation Classification Error Rate (in %)'
+                self.x_label = r'Attack Presentation Classification Error Rate (in \%)'
+                self.y_label = r'Bona Fide Presentation Classification Error Rate (in \%)'
         elif biometric_evaluation_type == 'identification':
             if abbreviate_axes:
-                self.x_label = 'FPIR (in %)'
-                self.y_label = 'FNIR (in %)'
+                self.x_label = r'FPIR (in \%)'
+                self.y_label = r'FNIR (in \%)'
             else:
-                self.x_label = 'False Positive Identification Rate (in %)'
-                self.y_label = 'False Negative Identification Rate (in %)'
+                self.x_label = r'False Positive Identification Rate (in \%)'
+                self.y_label = r'False Negative Identification Rate (in \%)'
         else:
-            self.x_label = 'Type I Error Rate (in %)'
-            self.y_label = 'Type II Error Rate (in %)'
+            self.x_label = r'Type I Error Rate (in \%)'
+            self.y_label = r'Type II Error Rate (in \%)'
             self.x_limits = numpy.array([1e-8, .99])
             self.y_limits = numpy.array([1e-8, .99])
 
-    def create_figure(self):
+    def create_figure(self, figure_height=5, figure_width=5):
         """
         Creates empty DET plot figure
         """
-        self.figure = mpl.figure()
+        self.figure = mpl.figure(figsize=(figure_width, figure_height), dpi=600)
         ax = self.figure.add_subplot(111)
         ax.set_aspect('equal')
 
