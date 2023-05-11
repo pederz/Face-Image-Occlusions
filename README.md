@@ -150,6 +150,7 @@ Extracted features from real samples (`features/real/`) and synthetic samples (`
   - **Fourth cell**: runs similarity comparison (mated and non-mated) on all features of synthetic samples
   - **Fifth cell**: runs similarity comparison (mated and non-mated) on real vs all synthetic features
 4. Similarity comparisons are saved in `similarity_scores/`, with one file for each of the different categories of comparisons.
+NB! This is a time-consuming process! Also, increase the print length of the cells to see all the print results, this is specifically for the third cell. Since it will loop through all combinations.
 
 # Distribution plot of similarity scores
 
