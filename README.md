@@ -6,7 +6,7 @@
     The code files for the project Face Image Occlusions Generation in the course [IMT4126 Biometrics](https://www.ntnu.edu/studies/courses/IMT4126) at NTNU.
   </p>
 </div>
-When referring to real samples, it referes to the biometric samples with biometric characteristic of face that are used as input to add occlusions script. When referring to synthetic samples, it referes to the biometric samples with biometric characteristic of face that are synthetically occluded output by the add occlusion script.
+When referring to real samples, it refers to the biometric samples with biometric characteristic of face that are used as input to add occlusions script. When referring to synthetic samples, it refers to the biometric samples with biometric characteristic of face that are synthetically occluded output by the add occlusion script.
 <br />
 
 <!-- Table of Contents -->
@@ -64,15 +64,15 @@ All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or
 | opencv-python| 4.7.0.68 |
 
 ## Setup and run
-- If generating all combinations of occlusions, use the script [add_occlusions_on_images_all_combinations.ipynb](../main/add_occlusions_on_images_all_combinations.ipynb).
+- If generating all combinations of occlusions, use the script [add_occlusions_on_images_all_combinations.ipynb](../main/add_occlusions_on_images_all_combinations.ipynb). This will result in 11 synthetic images for each input image.
 - If generating one type of combination of occlusions, use the script [add_occlusions_on_images.ipynb](../main/add_occlusions_on_images.ipynb)
-1. Download `shape_predictor_68_face_landmarks.dat` and put it in the project root folder.
+1. Download `shape_predictor_68_f ace_landmarks.dat` and put it in the project root folder.
 2. Put face images in the `samples/` folder.
 3. Open one of the two scripts in Jupyterlab.
 4. Ensure that the parameters in the first cell are correct in regards to the following:
-   - `model_path` is pointing to location of `shape_predictor_68_face_landmarks.dat`.
+   - `model_path` is pointing to location of the file `shape_predictor_68_face_landmarks.dat`.
    - If generating one type of combination of occlusions:
-     - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the samples that are located in `samples/`. Glass can either be `sunglass.png` or `glass.png`, this will change the output filename accordingly.
+     - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the samples that are in `samples/`. Glass can either be `sunglass.png` or `glass.png`, this will change the output filename accordingly.
      -  NB! The choices of occlusions that are supported are the files that are in `occ/`.
    - If generating all combinations of occlusions:
      - [mask.png](../main/occ/mask.png), [cap.png](../main/occ/cap.png), [glass.png](../main/occ/glass.png), and [sunglass.png](../main/occ/sunglass.png) must be precent in `occ/`
@@ -91,7 +91,7 @@ All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or
  
 
 ## Example
-This example is adding mask and glasses occlusions to biometric samples, with showing the occlusion variables and real and synthetic sample.
+This example is adding mask and glasses occlusions to biometric samples, showing the occlusion variables and real and synthetic sample.
 ````
 mask = 'mask.png'
 cap = ''
@@ -118,12 +118,12 @@ glass = 'glass.png'
 
 ## Setup
 1. Open the script [feature_extraction.ipynb](../main/feature_extraction.ipynb) in Jupyterlab.
-   - Second cell extracts features only from real samples (from `samples/`).
-   - Third cell extracts features only from synthetic samples (from `results/`).
+   - **Second cell** extracts features only from real samples (from `samples/`).
+   - **Third cell** extracts features only from synthetic samples (from `results/`).
 2. Run the script!
    - The script prints a list over biometric samples where the insightface cannot detect a face.
    - NB! The script skips extracting features from a file if the biometric feature file already exist in `features/real/` or `features/synthetic/`. But this behavior can be changed if `overwrite = True` in the first cell
-4. Features are saved in seperate files for each biometric sample in `features/`.
+4. Features are saved in separate files for each biometric sample in `features/`.
    - Features from real samples are saved in the folder `features/real/`.
    - Features from synthetic samples are saved in the folder `features/synthetic/`.
 
@@ -137,12 +137,12 @@ glass = 'glass.png'
 | tqdm | 4.65.0 |
 | numpy | 1.24.2 |
 
-Extracted features from real samples (`features/real/`) and sythetic samples (`features/synthetic/`)
+Extracted features from real samples (`features/real/`) and synthetic samples (`features/synthetic/`)
 
 
 ## Setup
 1. Open the script [similarity_comparison.ipynb](../main/similarity_comparison.ipynb) in JupyterLab:
-2. Run the first cell for imports, paths, function definition and creating feature lists
+2. Run the **first cell** for imports, paths, function definition and creating feature lists
 3. The next cells are independent comparisons:
   - **Second cell**: runs similarity comparison (mated and non-mated) on all features of real samples
   - **Third cell**: runs similarity comparison (mated and non-mated) on real vs synthetic features with all combinations of occlusions. It selects one feature from real image for each subject, and compares them towards all  synthetic features with the one set of combinations of occlusions. And loops through this until all combinations are done.
@@ -154,7 +154,7 @@ Extracted features from real samples (`features/real/`) and sythetic samples (`f
 
 ## Requirements
 
-Latex are used for the legends and labels. If not wanting to use latex, set `LaTeX = False` in the first cell
+Latex are used for legends and labels. If not wanting to use latex, set `LaTeX = False` in the first cell
 
 
 | pip package | version used |
@@ -167,7 +167,7 @@ Latex are used for the legends and labels. If not wanting to use latex, set `LaT
 
 ## Setup
 1. Open the script [plot_similarity_distribution.ipynb](../main/plot_similarity_distribution.ipynb) in JupyterLab:
-2. Run the first cell for imports, paths, function definition and creating feature lists
+2. Run the **first cell** for imports, paths, function definition and creating feature lists
 3. The next cells are independent plotting of the different scores:
   - **First cell**: Plots the score distribution of the mated and non-mated comparison on real samples
   - **Second cell**: Plots the score distribution of the mated and non-mated comparison for each of the different combinations of occlusions
