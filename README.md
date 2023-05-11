@@ -36,7 +36,7 @@ This project was runned on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`
 The [add_occlusions_on_images.ipynb](../main/add_occlusions_on_images.ipynb) requires a pretrained model from dlib called `shape_predictor_68_face_landmarks.dat` that can be downloaded from [http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2).
 
 
-All filenames of the biometric samples **MUST** start with a digit id followed by a d, where the id is unique of each different person. Example:
+All filenames of the biometric samples **MUST** start with a id followed by a delimiter and then a picture number, where the id is unique for each subject and each picture of the subject has its own number. In this example, the delimiter is 'd'. Example:
 ````
 Person A:
 00001d001.jpg
@@ -71,6 +71,7 @@ All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or
 3. Open one of the two scripts in Jupyterlab.
 4. Ensure that the parameters in the first cell are correct in regards to the following:
    - `model_path` is pointing to location of the file `shape_predictor_68_face_landmarks.dat`.
+   - Delimiter is updated to reflect the file names of face images in `samples/`
    - If generating one type of combination of occlusions:
      - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the samples that are in `samples/`. Glass can either be `sunglass.png` or `glass.png`, this will change the output filename accordingly.
      -  NB! The choices of occlusions that are supported are the files that are in `occ/`.
@@ -127,7 +128,7 @@ glass = 'glass.png'
    - Features from real samples are saved in the folder `features/real/`.
    - Features from synthetic samples are saved in the folder `features/synthetic/`.
 
-# Similarity Comparision
+# Similarity Comparison
 
 ## Requirements
 
@@ -142,13 +143,14 @@ Extracted features from real samples (`features/real/`) and synthetic samples (`
 
 ## Setup
 1. Open the script [similarity_comparison.ipynb](../main/similarity_comparison.ipynb) in JupyterLab:
-2. Run the **first cell** for imports, paths, function definition and creating feature lists
+2. Run the **first cell** for imports, paths, function definition and creating feature lists. Update delimiter to reflect the file name
 3. The next cells are independent comparisons:
   - **Second cell**: runs similarity comparison (mated and non-mated) on all features of real samples
   - **Third cell**: runs similarity comparison (mated and non-mated) on real vs synthetic features with all combinations of occlusions. It selects one feature from real image for each subject, and compares them towards all  synthetic features with the one set of combinations of occlusions. And loops through this until all combinations are done.
   - **Fourth cell**: runs similarity comparison (mated and non-mated) on all features of synthetic samples
   - **Fifth cell**: runs similarity comparison (mated and non-mated) on real vs all synthetic features
 4. Similarity comparisons are saved in `similarity_scores/`, with one file for each of the different categories of comparisons.
+NB! This is a time-consuming process! Also, increase the print length of the cells to see all the print results, this is specifically for the third cell. Since it will loop through all combinations.
 
 # Distribution plot of similarity scores
 
