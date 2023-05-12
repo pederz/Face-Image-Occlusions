@@ -52,6 +52,8 @@ Person B:
 
 All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or RGBA.
 
+NB! If `delimiter = '_'`, this will cause problems for the similarity comparisons, and plotting functions
+
 # Face Image Occlusion Generation
 
 ## Requirements
