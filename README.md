@@ -124,7 +124,7 @@ glass = 'glass.png'
    - **Third cell** extracts features only from synthetic samples (from `results/`).
 2. Run the script!
    - The script prints a list over biometric samples where the insightface cannot detect a face.
-   - NB! The script skips extracting features from a file if the biometric feature file already exist in `features/real/` or `features/synthetic/`. But this behavior can be changed if `overwrite = True` in the first cell
+   - NB! The script skips extracting features from a file if the biometric feature file already exist in `features/real/` or `features/synthetic/`. But this behaviour can be changed if `overwrite = True` in the first cell
 4. Features are saved in separate files for each biometric sample in `features/`.
    - Features from real samples are saved in the folder `features/real/`.
    - Features from synthetic samples are saved in the folder `features/synthetic/`.
