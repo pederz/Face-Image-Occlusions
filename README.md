@@ -71,7 +71,7 @@ All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or
 3. Open one of the two scripts in Jupyterlab.
 4. Ensure that the parameters in the first cell are correct in regards to the following:
    - `model_path` is pointing to location of the file `shape_predictor_68_face_landmarks.dat`.
-   - Delimiter is updated to reflect the file names of face images in `samples/`
+   - Delimiter is updated to reflect the file names of face images in `samples/` (subject-id delimiter image#)
    - If generating one type of combination of occlusions:
      - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the samples that are in `samples/`. Glass can either be `sunglass.png` or `glass.png`, this will change the output filename accordingly.
      -  NB! The choices of occlusions that are supported are the files that are in `occ/`.
