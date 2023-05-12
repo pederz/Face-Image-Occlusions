@@ -31,12 +31,12 @@ When referring to real samples, it refers to the biometric samples with biometri
    * [:toolbox: Setup](#setup-3)
    
 ## Project Requirements
-This project was runned on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`.
+This project was run on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`.
 
 The [add_occlusions_on_images.ipynb](../main/add_occlusions_on_images.ipynb) requires a pretrained model from dlib called `shape_predictor_68_face_landmarks.dat` that can be downloaded from [http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2).
 
 
-All filenames of the biometric samples **MUST** start with a id followed by a delimiter and then a picture number, where the id is unique for each subject and each picture of the subject has its own number. In this example, the delimiter is 'd'. Example:
+All filenames of the biometric samples **MUST** start with an id followed by a delimiter and then a picture number, where the id is unique for each subject and each picture of the subject has its own number. In this example, the delimiter is 'd'. Example:
 ````
 Person A:
 00001d001.jpg
@@ -169,7 +169,7 @@ Latex are used for legends and labels. If not wanting to use latex, set `LaTeX =
 | matplotlib | 3.7.1 |
 
 ## Setup
-1. Open the script [plot_similarity_distribution.ipynb](../main/plot_similarity_distribution.ipynb) in JupyterLab:
+1. Open the script [plot_distributions.ipynb](../main/plot_distributions.ipynb) in JupyterLab:
 2. Run the **first cell** for imports, paths, function definition and creating feature lists
 3. The next cells are independent plotting of the different scores:
   - **First cell**: Plots the score distribution of the mated and non-mated comparison on real samples
