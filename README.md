@@ -85,7 +85,7 @@ All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or
       * Face not detected in sample
       * Extreme pose conditions detected in sample
       * Sample is grayscale
-      * If one of the following landsmarks are out of image bounds:
+      * If one of the following landmarks are out of image bounds:
         - left ear
         - right ear
         - chin
