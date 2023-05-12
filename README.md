@@ -80,7 +80,7 @@ All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or
      - [mask.png](../main/occ/mask.png), [cap.png](../main/occ/cap.png), [glass.png](../main/occ/glass.png), and [sunglass.png](../main/occ/sunglass.png) must be precent in `occ/`
 5. Run the script and the synthetic samples are saved in `results/` with addition of characters based on what occlusions are added to the image.
    - Example: [00001d001.png](example/00001d001.png) with selected mask and glass as occlusions are saved as [00001d001_mask_glass.png](example/00001d001_mask_glass.png)
-   - The script prints a list over samples that were rejected as a result of the following:
+   - The script prints a list over samples that were rejected because:
       * Multiple faces were detected in sample
       * Face not detected in sample
       * Extreme pose conditions detected in sample
