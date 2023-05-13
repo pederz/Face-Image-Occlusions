@@ -31,12 +31,12 @@ When referring to real samples, it refers to the biometric samples with biometri
    * [:toolbox: Setup](#setup-3)
    
 ## Project Requirements
-This project was runned on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`.
+This project was run on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`.
 
 The [add_occlusions_on_images.ipynb](../main/add_occlusions_on_images.ipynb) requires a pretrained model from dlib called `shape_predictor_68_face_landmarks.dat` that can be downloaded from [http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2).
 
 
-All filenames of the biometric samples **MUST** start with a id followed by a delimiter and then a picture number, where the id is unique for each subject and each picture of the subject has its own number. In this example, the delimiter is 'd'. Example:
+All filenames of the biometric samples **MUST** start with an id followed by a delimiter and then a picture number, where the id is unique for each subject and each picture of the subject has its own number. In this example, the delimiter is 'd'. Example:
 ````
 Person A:
 00001d001.jpg
@@ -51,6 +51,8 @@ Person B:
 ````
 
 All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or RGBA.
+
+NB! If `delimiter = '_'`, this will cause problems for the similarity comparisons, and plotting functions
 
 # Face Image Occlusion Generation
 
@@ -80,12 +82,12 @@ All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or
      - [mask.png](../main/occ/mask.png), [cap.png](../main/occ/cap.png), [glass.png](../main/occ/glass.png), and [sunglass.png](../main/occ/sunglass.png) must be precent in `occ/`
 5. Run the script and the synthetic samples are saved in `results/` with addition of characters based on what occlusions are added to the image.
    - Example: [00001d001.png](example/00001d001.png) with selected mask and glass as occlusions are saved as [00001d001_mask_glass.png](example/00001d001_mask_glass.png)
-   - The script prints a list over samples that were rejected as a result of the following:
+   - The script prints a list over samples that were rejected because:
       * Multiple faces were detected in sample
       * Face not detected in sample
       * Extreme pose conditions detected in sample
       * Sample is grayscale
-      * If one of the following landsmarks are out of image bounds:
+      * If one of the following landmarks are out of image bounds:
         - left ear
         - right ear
         - chin
@@ -124,7 +126,7 @@ glass = 'glass.png'
    - **Third cell** extracts features only from synthetic samples (from `results/`).
 2. Run the script!
    - The script prints a list over biometric samples where the insightface cannot detect a face.
-   - NB! The script skips extracting features from a file if the biometric feature file already exist in `features/real/` or `features/synthetic/`. But this behavior can be changed if `overwrite = True` in the first cell
+   - NB! The script skips extracting features from a file if the biometric feature file already exist in `features/real/` or `features/synthetic/`. But this behaviour can be changed if `overwrite = True` in the first cell
 4. Features are saved in separate files for each biometric sample in `features/`.
    - Features from real samples are saved in the folder `features/real/`.
    - Features from synthetic samples are saved in the folder `features/synthetic/`.
@@ -169,7 +171,7 @@ Latex are used for legends and labels. If not wanting to use latex, set `LaTeX =
 | matplotlib | 3.7.1 |
 
 ## Setup
-1. Open the script [plot_similarity_distribution.ipynb](../main/plot_similarity_distribution.ipynb) in JupyterLab:
+1. Open the script [plot_distributions.ipynb](../main/plot_distributions.ipynb) in JupyterLab:
 2. Run the **first cell** for imports, paths, function definition and creating feature lists
 3. The next cells are independent plotting of the different scores:
   - **First cell**: Plots the score distribution of the mated and non-mated comparison on real samples
