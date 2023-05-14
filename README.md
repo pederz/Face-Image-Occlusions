@@ -115,10 +115,10 @@ glass = 'glass.png'
 | tqdm | 4.65.0 |
 | opencv-python| 4.7.0.68 |
 | numpy | 1.24.2 |
-| onnxruntime-gpu [^1] | 1.4.1 |
+| onnxruntime [^1] | 1.4.1 |
 | insightface | 0.7.3 |
 
-[^1]: If running with only cpu mode, install onnxruntime instead. NB! The feature extraction will take longer time.
+[^1]: Running cpu-only mode, if using CUDA compatible gpu, use onnxruntime-gpu instead. 1.4.1 requires CUDA 11.6 and cuDNN 8.2.4.
 
 ## Setup
 1. Open the script [feature_extraction.ipynb](../main/feature_extraction.ipynb) in Jupyterlab.
