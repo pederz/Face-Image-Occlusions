@@ -148,12 +148,11 @@ Extracted features from real samples (`features/real/`) and synthetic samples (`
 1. Open the script [similarity_comparison.ipynb](../main/similarity_comparison.ipynb) in JupyterLab:
 2. Run the **first cell** for imports, paths, function definition and creating feature lists. Update delimiter to reflect the file name
 3. The next cells are independent comparisons:
-  - **Second cell**: runs similarity comparison (mated and non-mated) on all features of real samples
-  - **Third cell**: runs similarity comparison (mated and non-mated) on real vs synthetic features with all combinations of occlusions. It selects one feature from real image for each subject, and compares them towards all  synthetic features with the one set of combinations of occlusions. And loops through this until all combinations are done.
-  - **Fourth cell**: runs similarity comparison (mated and non-mated) on all features of synthetic samples
-  - **Fifth cell**: runs similarity comparison (mated and non-mated) on real vs all synthetic features
+  - **Second cell**: runs similarity comparison (mated and non-mated) on features of real samples only. It selects one feature by random from each subject as a reference and compares it against all other real features.
+  - **Third cell**: runs similarity comparison (mated and non-mated) on real vs synthetic features with all combinations of occlusions. It selects one feature by random from each subject from real features, and compares them towards all synthetic features with the one set of combinations of occlusions. And loops through this until all combinations of occlusions are done.
+  - **Fourth cell**: runs similarity comparison (mated and non-mated) on real vs synthetic features with all occlusions. It selects one feature by random from each subject from real features, and compares them towards all the synthetic features.
 4. Similarity comparisons are saved in `similarity_scores/`, with one file for each of the different categories of comparisons.
-NB! This is a time-consuming process! Also, increase the print length of the cells to see all the print results, this is specifically for the third cell. Since it will loop through all combinations.
+NB! This is a time-consuming process (third and fourth cell)! Also, increase the print length of the cells in Jupterlab to see all the print results from the third cell. Since it will loop through all combinations.
 
 # Distribution plot of similarity scores
 
@@ -174,9 +173,11 @@ Latex are used for legends and labels. If not wanting to use latex, set `LaTeX =
 1. Open the script [plot_distributions.ipynb](../main/plot_distributions.ipynb) in JupyterLab:
 2. Run the **first cell** for imports, paths, function definition and creating feature lists
 3. The next cells are independent plotting of the different scores:
-  - **First cell**: Plots the score distribution of the mated and non-mated comparison on real samples
-  - **Second cell**: Plots the score distribution of the mated and non-mated comparison for each of the different combinations of occlusions
-  - **Third cell**: Plots one score distribution for all mated comparisons and one score distribution for all non-mated comparisons in `similarity_scores`
+  - **Second cell**: Plots the score distribution of the mated and non-mated comparison on features from real samples.
+  - **Third cell**: Plots the score distribution of the mated and non-mated comparison for each of the different real vs synthetic samples with different combinations of occlusions.
+  - **Fourth cell**: Plots one score distribution for all mated comparisons and one score distribution for all non-mated comparisons in `similarity_scores`. It labels the real samples as "baseline", and the rest are labeled as what type of combination of occlusions that were  in the real vs synthetic comparison.
+  - **Fifth cell** Plots the score distribution of the mated and non-mated comparison on the real vs all synthic samples.
+  - **Sixth cell** Plots one score distribution of the mated real and mated real vs all synthetic samples, and one score distribution of the non-mated real and non-mated real vs all synthetic samples
 5. Plots are saved in `plots/`, with files for each of the different categories of comparisons
   - `Latex = True`: Three files for each plot (`.pdf`,`.png`,`.pgf`), and plots are NOT shown in JupyterLab
   - `LaTeX = False`: Two files for each plot (`.pdf`,`.png`) and plots are shown in JupyterLab
