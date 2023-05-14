@@ -195,4 +195,10 @@ Latex are used for legends and labels. If not wanting to use latex, set `LaTeX =
 | matplotlib | 3.7.1 |
 
 ## Setup
-
+1. Open the script [plot_DET_curves.ipynb](../main/plot_DET_curves.ipynb) in JupyterLab:
+2. Run the **first cell** for imports & paths
+3. The next cells are independent plotting of the different DET curves:
+  - **Second cell**: Plots DET for the comparison of real samples and real vs synthetic with single occlusions. Saved as `baseline_single_occ.pdf`.
+  - **Third cell**: Plots DET for the comparison of real samples and real vs synthetic of mask, mask&sunglass and mask&sunglass&cap. Saved as `baseline_selected_occ.pdf`.
+  - **Fourth cell** Plots DET for the comparison of real samples and real vs all synthetic. Saved as `dataset-occluded_dataset.pdf`.
+4. Plots are saved in `plots_DET/` folder.
