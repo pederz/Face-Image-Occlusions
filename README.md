@@ -200,5 +200,6 @@ Latex are used for legends and labels. If not wanting to use latex, set `LaTeX =
 3. The next cells are independent plotting of the different DET curves:
   - **Second cell**: Plots DET for the comparison of real samples and real vs synthetic with single occlusions. Saved as `baseline_single_occ.pdf`.
   - **Third cell**: Plots DET for the comparison of real samples and real vs synthetic of mask, mask&sunglass and mask&sunglass&cap. Saved as `baseline_selected_occ.pdf`.
-  - **Fourth cell** Plots DET for the comparison of real samples and real vs all synthetic. Saved as `dataset-occluded_dataset.pdf`.
+  - **Fourth cell**: Plots DET for the comparison of real samples and real vs synthetic of mask, mask&sunglass, mask&sunglass&cap and real vs all synthetic. Saved as `baseline_selected_occluded-dataset.pdf`.
+  - **Fifth cell** Plots DET for the comparison of real samples and real vs all synthetic. Saved as `dataset-occluded_dataset.pdf`.
 4. Plots are saved in `plots_DET/` folder.
