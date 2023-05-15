@@ -27,10 +27,9 @@ from tikzplotlib import save as tikz_save
 import logging
 
 mpl.rcParams.update({
-    "pgf.texsystem": "pdflatex",
-    'font.family': 'serif',
     'text.usetex': True,
-    'pgf.rcfonts': False,
+    'font.family': 'serif',
+    "font.serif" : ["Computer Modern Serif"],
 })
 
 
@@ -47,18 +46,18 @@ __credits__ = ["Niko Brummer", "Anthony Larcher", "Edward de Villiers"]
 # helper functions
 # see: sidekit.bosaris.detplot
 colorStyle = [
-    ((0, 0, 0), '-', 1),  # black
-    ((0, 0, 1.0), '-', 1),  # blue
-    ((0.8, 0.0, 0.0), '-', 1),  # red
-    ((0, 0.6, 0.0), '-', 1),  # green
-    ((0.5, 0.0, 0.5), '-', 1),  # magenta
-    ((0.3, 0.3, 0.0), '-', 1),  # orange
-    ((0, 0, 0), '--', 1),  # black
-    ((0, 0, 1.0), '--', 1),  # blue
-    ((0.8, 0.0, 0.0), '--', 1),  # red
-    ((0, 0.6, 0.0), '--', 1),  # green
-    ((0.5, 0.0, 0.5), '--', 1),  # magenta
-    ((0.3, 0.3, 0.0), '--', 1),  # orange
+    ((0, 0, 0), '-', 2),  # black
+    ((0, 0, 1.0), '-', 2),  # blue
+    ((0.8, 0.0, 0.0), '-', 2),  # red
+    ((0, 0.6, 0.0), '-', 2),  # green
+    ((0.5, 0.0, 0.5), '-', 2),  # magenta
+    ((0.3, 0.3, 0.0), '-', 2),  # orange
+    ((0, 0, 0), '--', 2),  # black
+    ((0, 0, 1.0), '--', 2),  # blue
+    ((0.8, 0.0, 0.0), '--', 2),  # red
+    ((0, 0.6, 0.0), '--', 2),  # green
+    ((0.5, 0.0, 0.5), '--', 2),  # magenta
+    ((0.3, 0.3, 0.0), '--', 2),  # orange
     ]
 
 grayStyle = [
@@ -338,7 +337,7 @@ class DET:
          Proc. EUROSPEECH, pp. 1895-1898, 1997
     """
 
-    def __init__(self, biometric_evaluation_type=None, abbreviate_axes=False, plot_title=r'Detection Error Tradeoff (DET) curves',
+    def __init__(self, biometric_evaluation_type=None, abbreviate_axes=False, plot_title=None,
                  plot_eer_line=False, plot_rule_of_30=False, cleanup_segments_distance=0.01):
         self.num_systems = 0
         self.system_labels = []
