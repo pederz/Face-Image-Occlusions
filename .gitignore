@@ -4,6 +4,7 @@ results/
 features/
 similarity_scores/
 plots/
+plots_DET/
 
 samples/**
 results/**
@@ -11,6 +12,7 @@ features/**
 features/**/**
 similarity_scores/**
 plots/**
+plots_DET/**
 
 **/shape_predictor_68_face_landmarks.dat
 shape_predictor_68_face_landmarks.dat
