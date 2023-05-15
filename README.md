@@ -176,8 +176,9 @@ Latex are used for legends and labels. If not wanting to use latex, set `LaTeX =
   - **Second cell**: Plots the score distribution of the mated and non-mated comparison on features from real samples.
   - **Third cell**: Plots the score distribution of the mated and non-mated comparison for each of the different real vs synthetic samples with different combinations of occlusions.
   - **Fourth cell** Plots the score distribution of the mated and non-mated comparison on the real vs all synthic samples.
-  - **Fifth cell**: Plots one score distribution for all mated comparisons and one score distribution for all non-mated comparisons in `similarity_scores`. It labels the real samples as "baseline", and the rest are labeled as what type of combination of occlusions that were  in the real vs synthetic comparison.
-  - **Sixth cell** Plots one score distribution of the mated real and mated real vs all synthetic samples, and one score distribution of the non-mated real and non-mated real vs all synthetic samples
+  - **Fifth cell**: Plots one score distribution for mated comparisons and one score distribution for non-mated comparisons for real samples and real versus synthetic single occlusions in `similarity_scores`. It labels the real samples as "baseline", and the rest are labeled for the single occlusion
+  - **Sixth cell**: Plots one score distribution for all mated comparisons and one score distribution for all non-mated comparisons in `similarity_scores`. It labels the real samples as "baseline", and the rest are labeled as what type of combination of occlusions that were in the real vs synthetic comparison.
+  - **Seventh cell** Plots one score distribution of the mated real and mated real vs all synthetic samples, and one score distribution of the non-mated real and non-mated real vs all synthetic samples
 5. Plots are saved in `plots/`, with files for each of the different categories of comparisons
   - `Latex = True`: Three files for each plot (`.pdf`,`.png`,`.pgf`), and plots are NOT shown in JupyterLab
   - `LaTeX = False`: Two files for each plot (`.pdf`,`.png`) and plots are shown in JupyterLab
