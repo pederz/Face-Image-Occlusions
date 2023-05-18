@@ -141,7 +141,7 @@ glass = 'glass.png'
 
 Extracted features from real samples (`features/real/`) and synthetic samples (`features/synthetic/`)
 
-:warning: The extracted features **MUST** start with an id followed by a delimiter and then a picture number, where the id is unique for each subject and each picture of the subject has its own number. Please see example of the biometric samples naming requirements in [:warning: biometric-samples-filename-standards](#filenames-of-biometric-samples-for-similarity-comparisons)
+:warning: The extracted features **MUST** start with an id followed by a delimiter and then a picture number, where the id is unique for each subject and each picture of the subject has its own number. Please see example of the biometric samples naming requirements in [Biometric Samples filename standards](#biometric-samples-filename-standards)
 
 ## Setup
 1. Open the script [similarity_comparison.ipynb](../main/similarity_comparison.ipynb) in JupyterLab:
