@@ -13,7 +13,7 @@ When referring to real samples, it refers to the biometric samples with biometri
 
 # :notebook_with_decorative_cover: Table of Contents
 - [:ballot_box_with_check: Project Requirements](#project-requirements)
-   * [:warning: Filenames of Biometric Samples for Similarity Comparisons](#filenames-of-biometric-samples-for-similarity-comparisons)
+   * [:warning: Biometric Samples filename standards](#biometric-samples-filename-standards)
 - [Face Image Occlusion Generation](#face-image-occlusion-generation)
    * [:ballot_box_with_check: Requirements](#requirements)
    * [:toolbox: Setup](#setup)
@@ -38,8 +38,8 @@ The [add_occlusions_on_images.ipynb](../main/add_occlusions_on_images.ipynb) req
 
 All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or RGBA.
 
-### Filenames of Biometric Samples for Similarity Comparisons
-If the biometric samples are going to be used in this projects similairty comparisons, then all filenames of the biometric samples must start with an id followed by a delimiter and then a picture number, where the id is unique for each subject and each picture of the subject has its own number. In this example, the delimiter is 'd'. Example:
+### Biometric Samples filename standards
+If the biometric features from the biometric samples are going to be used in similarity comparisons, then all filenames of the biometric samples must start with an id followed by a delimiter and then a picture number, where the id is unique for each subject and each picture of the subject has its own number. In this example, the delimiter is 'd'. Example:
 ````
 Person A:
 00001d001.jpg
@@ -141,7 +141,7 @@ glass = 'glass.png'
 
 Extracted features from real samples (`features/real/`) and synthetic samples (`features/synthetic/`)
 
-:warning: The extracted features **MUST** start with an id followed by a delimiter and then a picture number, where the id is unique for each subject and each picture of the subject has its own number. Please see example of the biometric samples naming requirements in [:warning: Filenames of Biometric Samples for Similarity Comparisons](#filenames-of-biometric-samples-for-similarity-comparisons)
+:warning: The extracted features **MUST** start with an id followed by a delimiter and then a picture number, where the id is unique for each subject and each picture of the subject has its own number. Please see example of the biometric samples naming requirements in [:warning: biometric-samples-filename-standards](#filenames-of-biometric-samples-for-similarity-comparisons)
 
 ## Setup
 1. Open the script [similarity_comparison.ipynb](../main/similarity_comparison.ipynb) in JupyterLab:
