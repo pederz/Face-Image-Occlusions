@@ -13,7 +13,7 @@ When referring to real samples, it refers to the biometric samples with biometri
 
 # :notebook_with_decorative_cover: Table of Contents
 - [:ballot_box_with_check: Project Requirements](#project-requirements)
-   * [Filenames for similarity comparison](#filenames-for-similarity-comparisons)
+   * [:warning: Filenames of Biometric Samples for Similarity Comparisons](#filenames-of-biometric-samples-for-similarity-comparisons)
 - [Face Image Occlusion Generation](#face-image-occlusion-generation)
    * [:ballot_box_with_check: Requirements](#requirements)
    * [:toolbox: Setup](#setup)
@@ -38,7 +38,7 @@ The [add_occlusions_on_images.ipynb](../main/add_occlusions_on_images.ipynb) req
 
 All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or RGBA.
 
-### Filenames for similarity comparisons:
+### Filenames of Biometric Samples for Similarity Comparisons
 If the biometric samples are going to be used in this projects similairty comparisons, then all filenames of the biometric samples must start with an id followed by a delimiter and then a picture number, where the id is unique for each subject and each picture of the subject has its own number. In this example, the delimiter is 'd'. Example:
 ````
 Person A:
@@ -52,7 +52,7 @@ Person B:
 00002d003.jpg
 00002d004.jpeg
 ````
-NB! If `delimiter = '_'`, this will cause problems for the similarity comparisons, and plotting functions
+:warning: If `delimiter = '_'`, this will cause problems for the similarity comparisons, and plotting functions
 
 # Face Image Occlusion Generation
 
@@ -73,8 +73,6 @@ NB! If `delimiter = '_'`, this will cause problems for the similarity comparison
 3. Open one of the two scripts in Jupyterlab.
 4. Ensure that the parameters in the first cell are correct in regards to the following:
    - `model_path` is pointing to location of the file `shape_predictor_68_face_landmarks.dat`.
-   - Delimiter is updated to reflect the file names of face images in `samples/` (subject-id delimiter image#) 
-      - Ex: `00001d001.jpg` in image list, delimiter = 'd'
    - If generating one type of combination of occlusions:
      - `mask`, `cap`, and `glass` variables are updated with the desired occlusions that are going to be applied on the samples that are in `samples/`. Glass can either be `sunglass.png` or `glass.png`, this will change the output filename accordingly.
      -  NB! The choices of occlusions that are supported are the files that are in `occ/`.
@@ -143,6 +141,7 @@ glass = 'glass.png'
 
 Extracted features from real samples (`features/real/`) and synthetic samples (`features/synthetic/`)
 
+:warning: The extracted features **MUST** start with an id followed by a delimiter and then a picture number, where the id is unique for each subject and each picture of the subject has its own number. Please see example of the biometric samples naming requirements in [:warning: Filenames of Biometric Samples for Similarity Comparisons](#filenames-of-biometric-samples-for-similarity-comparisons)
 
 ## Setup
 1. Open the script [similarity_comparison.ipynb](../main/similarity_comparison.ipynb) in JupyterLab:
