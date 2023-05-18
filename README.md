@@ -13,6 +13,7 @@ When referring to real samples, it refers to the biometric samples with biometri
 
 # :notebook_with_decorative_cover: Table of Contents
 - [:ballot_box_with_check: Project Requirements](#project-requirements)
+   * [Filenames for similarity comparison](#filenames-for-similarity-comparisons)
 - [Face Image Occlusion Generation](#face-image-occlusion-generation)
    * [:ballot_box_with_check: Requirements](#requirements)
    * [:toolbox: Setup](#setup)
@@ -20,7 +21,7 @@ When referring to real samples, it refers to the biometric samples with biometri
 - [Biometric Features Extraction](#biometric-features-extraction)
    * [:ballot_box_with_check: Requirements](#requirements-1)
    * [:toolbox: Setup](#setup-1)
-- [Similarity Comparison](#similarity-comparision)
+- [Similarity Comparison](#similarity-comparison)
    * [:ballot_box_with_check: Requirements](#requirements-2)
    * [:toolbox: Setup](#setup-2)
 - [Distribution plot of similarity scores](#distribution-plot-of-similarity-scores) 
@@ -35,8 +36,10 @@ This project was run on Ubuntu 22.04, CUDA supported GPU, and `Python 3.10.6`.
 
 The [add_occlusions_on_images.ipynb](../main/add_occlusions_on_images.ipynb) requires a pretrained model from dlib called `shape_predictor_68_face_landmarks.dat` that can be downloaded from [http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2).
 
+All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or RGBA.
 
-All filenames of the biometric samples **MUST** start with an id followed by a delimiter and then a picture number, where the id is unique for each subject and each picture of the subject has its own number. In this example, the delimiter is 'd'. Example:
+### Filenames for similarity comparisons:
+If the biometric samples are going to be used in this projects similairty comparisons, then all filenames of the biometric samples must start with an id followed by a delimiter and then a picture number, where the id is unique for each subject and each picture of the subject has its own number. In this example, the delimiter is 'd'. Example:
 ````
 Person A:
 00001d001.jpg
@@ -49,9 +52,6 @@ Person B:
 00002d003.jpg
 00002d004.jpeg
 ````
-
-All biometric samples must be either `*.png`, `*.jpg`, or `*.jpeg` and be RBG or RGBA.
-
 NB! If `delimiter = '_'`, this will cause problems for the similarity comparisons, and plotting functions
 
 # Face Image Occlusion Generation
